@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <title>Three Musketeers Game</title>
+    <style>
+        html, body{
+            height: 90%;
+        }
+        #board{
+            display: none;
+            border-collapse: collapse;
+            position: absolute;
+            top:25%;
+            left:calc(50% - 200px);
+            width: 420px;
+            height: 415px;
+        }
+        #board tr td{
+            border: 1px solid black;
+            padding: 1rem;
+            height: 50px;
+            width: 50px;
+        }
+        #diffucltyLevelChoice{
+            position: absolute;
+            top:25%;
+            left:calc(50% - 200px);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            flex-wrap: wrap;
+            align-content: center;
+            width: 400px;
+            height: 400px;
+        }
+        #computerWon{
+            display: none;
+            flex-direction: column;
+            text-align: center;
+            flex-wrap: wrap;
+            align-content: center;
+            position: absolute;
+            top:25%;
+            left:calc(50% - 200px);
+            width: 400px;
+            height: 400px;
+        }
+        #playerWon{
+            display: none;
+            flex-direction: column;
+            text-align: center;
+            flex-wrap: wrap;
+            align-content: center;
+            position: absolute;
+            top:25%;
+            left:calc(50% - 200px);
+            width: 400px;
+            height: 400px;
+            
+        }
+        body{
+            background-color: blanchedalmond;
+        }
+        .beuButton{
+            margin: 1rem 2rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 2rem;
+            border: 1px solid darkseagreen;
+            color: white;
+            background-color: darkseagreen;
+        }
+        .restartButton{
+            margin: 1rem 3rem;
+            cursor: pointer;
+            padding: 0.75rem 7rem;
+            border-radius: 2rem;
+            border: 1px solid darkseagreen;
+            color: white;
+            background-color: darkseagreen;
+        }
+        h1{
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .chip{
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; 
+        }
+        .mushketeer{
+            background-color: blue;
+        }
+        .enemy{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="diffucltyLevelChoice">
+        <h1>Choose Difficulty Level</h1>
+        <span id="easyButton" class="beuButton" >Easy</span>
+        <span id="mediumButton" class="beuButton">Medium</span>
+        <span id="diffucltButton" class="beuButton">Difficult</span>
+    </div>
+    <h1>Three Musketeers Game</h1>
+    <table id="board">
+        <tr>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip mushketeer"></div></td>
+        </tr>
+        <tr>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+        </tr>
+        <tr>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip mushketeer"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+        </tr>
+        <tr>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+        </tr>
+        <tr>
+            <td class="cell"><div class="chip mushketeer"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+            <td class="cell"><div class="chip enemy"></div></td>
+        </tr>
+    </table>
+    <div id="playerWon">
+        <h1>You won! Congratulations!</h1>
+        <span id="restartButtonP" class="restartButton">Restart</span>
+    </div>
+    <div id="computerWon">
+        <h1>Computer won! Try again!</h1>
+        <span id="restartButtonC" class="restartButton">Restart</span>
+    </div>
+</body>
+</html>
