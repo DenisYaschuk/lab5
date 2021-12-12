@@ -1,0 +1,513 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+span{
+    transition: all 3ms;
+}
+#main {
+    display: grid;
+    grid-template-rows: 20vh 5vh 10vh repeat(3, 10.56vh) 10vh 10vh 20vh;
+    grid-template-columns: 10vw repeat(6, 12vw) 18vw;
+    grid-gap: .5vh;
+    background-color: #fffcf4;
+}
+
+#menu {
+    grid-row: 5/7;
+    grid-column: 1/9;
+    transition: 2s;
+    justify-self: center;
+}
+
+#rules {
+    grid-row: 2/10;
+    grid-column: 1/9;
+    text-align: center;
+    justify-self: center;
+    z-index: 2;
+    width: 50vw;
+    height: 30vh;
+}
+
+#rules a {
+    font-size: calc(2vh + .2rem);
+    color: #E7926D;
+}
+
+#rules a:hover {
+    font-size: calc(2vh + .2rem);
+    cursor: pointer;
+    color: #E17C50;
+}
+
+#rules p {
+    font-size: calc(1.7vh + .2rem);
+}
+
+#rules h2 {
+    font-size: calc(2vh + .2rem);
+}
+
+.btn {
+    background-color: #F0EADB;
+    border-radius: 20px;
+    border: solid 2px black;
+    height: 6vh;
+    width: 18vw;
+    margin-top: 2rem;
+    transition: background-color 500ms;
+    font-size: calc(1.5vh + .2rem);
+}
+
+.btn:hover {
+    background-color: #E7926D;
+    cursor: pointer;
+}
+
+#outcome_message {
+    display: none;
+    grid-row: 4/5;
+    grid-column: 4/6;
+    align-self: center;
+    text-align: center;
+    font-size: 3rem;
+    margin-left: 4vw;
+    z-index: 5;
+    padding: 5px;
+    background-color: #F0EADB;
+    border: black 2px solid;
+    border-radius: 20px;
+}
+
+#restart_btn {
+    grid-row: 5/6;
+    grid-column: 4/5;
+}
+
+#end_btn {
+    display: none;
+}
+
+.played_card {
+    height: 10.56vw;
+    width: 6.91vw;
+}
+
+.player_hand:hover {
+    cursor: pointer;
+    position: relative;
+    bottom: 10vh;
+}
+
+.player_hand {
+    transition: all 100ms ease-in 0ms;
+    position: relative;
+    bottom: 5vh;
+}
+.bot_hand {
+    transition: all 100ms ease-in 0ms;
+    position: relative;
+    bottom: -5vh;
+}
+
+.discarded {
+    grid-row: 6/7;
+    grid-column: 8/9;
+    height: 10.56vw;
+    width: 6.91vw;
+    align-self: center;
+    justify-self: center;
+}
+
+.deck {
+    grid-row: 3/5;
+    grid-column: 8/9;
+    align-self: start;
+    justify-self: center;
+    height: 10.56vw;
+    width: 6.91vw;
+}
+.bot_hand{
+    height: 10.56vw;
+    width: 6.91vw;
+}
+.player_hand{
+    height: 10.56vw;
+    width: 6.91vw; 
+}
+.trump_card {
+    transform: rotate(270deg);
+    z-index: -1;
+    margin-right: 7vw;
+}
+
+
+
+/*Attacking Cards*/
+
+#a1c {
+    grid-row: 4/6;
+    grid-column: 2/3;
+    z-index: 0;
+    justify-self: center;
+}
+
+#a2c {
+    grid-row: 4/6;
+    grid-column: 3/4;
+    z-index: 0;
+    justify-self: center;
+}
+
+#a3c {
+    grid-row: 4/6;
+    grid-column: 4/5;
+    z-index: 0;
+    justify-self: center;
+}
+
+#a4c {
+    grid-row: 4/6;
+    grid-column: 5/6;
+    z-index: 0;
+    justify-self: center;
+}
+
+#a5c {
+    grid-row: 4/6;
+    grid-column: 6/7;
+    z-index: 0;
+    justify-self: center;
+}
+
+#a6c {
+    grid-row: 4/6;
+    grid-column: 7/8;
+    z-index: 0;
+    justify-self: center;
+}
+
+/*Defending Cards*/
+
+#d1c {
+    grid-row: 4/7;
+    grid-column: 2/3;
+    z-index: 1;
+    margin-top: 6vh;
+    justify-self: center;
+}
+
+#d2c {
+    grid-row: 4/7;
+    grid-column: 3/4;
+    z-index: 1;
+    margin-top: 6vh;
+    justify-self: center;
+}
+
+#d3c {
+    grid-row: 4/7;
+    grid-column: 4/5;
+    z-index: 1;
+    margin-top: 6vh;
+    justify-self: center;
+}
+
+#d4c {
+    grid-row: 4/7;
+    grid-column: 5/6;
+    z-index: 1;
+    margin-top: 6vh;
+    justify-self: center;
+
+}
+
+#d5c {
+    grid-row: 4/7;
+    grid-column: 6/7;
+    z-index: 1;
+    margin-top: 6vh;
+    justify-self: center;
+}
+
+#d6c {
+    grid-row: 4/7;
+    grid-column: 7/8;
+    z-index: 1;
+    margin-top: 6vh;
+    justify-self: center;
+}
+
+/*Player hand*/
+
+.p1c {
+    grid-row: 8/10;
+    grid-column: 2/3;
+    z-index: 2;
+}
+
+.p2c {
+    grid-row: 8/10;
+    grid-column: 3/4;
+    z-index: 2;
+}
+
+.p3c {
+    grid-row: 8/10;
+    grid-column: 4/5;
+    z-index: 2;
+}
+
+.p4c {
+    grid-row: 8/10;
+    grid-column: 5/6;
+    z-index: 2;
+}
+
+.p5c {
+    grid-row: 8/10;
+    grid-column: 6/7;
+    z-index: 2;
+}
+
+.p6c {
+    grid-row: 8/10;
+    grid-column: 7/8;
+    z-index: 2;
+}
+
+.p7c {
+    grid-row: 7/9;
+    grid-column: 2/3;
+    z-index: 1;
+}
+
+.p8c {
+    grid-row: 7/9;
+    grid-column: 3/4;
+    z-index: 1;
+}
+
+.p9c {
+    grid-row: 7/9;
+    grid-column: 4/5;
+    z-index: 1;
+}
+
+.p10c {
+    grid-row: 7/9;
+    grid-column: 5/6;
+    z-index: 1;
+}
+
+.p11c {
+    grid-row: 7/9;
+    grid-column: 6/7;
+    z-index: 1;
+}
+
+.p12c {
+    grid-row: 7/9;
+    grid-column: 7/8;
+    z-index: 1;
+}
+
+.p13c {
+    grid-row: 6/9;
+    grid-column: 2/3;
+    z-index: 0;
+}
+
+.p14c {
+    grid-row: 6/9;
+    grid-column: 3/4;
+    z-index: 0;
+}
+
+.p15c {
+    grid-row: 6/9;
+    grid-column: 4/5;
+    z-index: 0;
+}
+
+.p16c {
+    grid-row: 6/9;
+    grid-column: 5/6;
+    z-index: 0;
+}
+
+.p17c {
+    grid-row: 6/9;
+    grid-column: 6/7;
+    z-index: 0;
+}
+
+.p18c {
+    grid-row: 6/9;
+    grid-column: 7/8;
+    z-index: 0;
+}
+
+/* Bot Hand */
+.b1c {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    z-index: 2;
+}
+
+.b2c {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    z-index: 2;
+}
+
+.b3c {
+    grid-row: 1/2;
+    grid-column: 4/5;
+    z-index: 2;
+}
+
+.b4c {
+    grid-row: 1/2;
+    grid-column: 5/6;
+    z-index: 2;
+}
+
+.b5c {
+    grid-row: 1/2;
+    grid-column: 6/7;
+    z-index: 2;
+}
+
+.b6c {
+    grid-row: 1/2;
+    grid-column: 7/8;
+    z-index: 2;
+}
+
+.b7c {
+    grid-row: 2/4;
+    grid-column: 2/3;
+    z-index: 2;
+}
+
+.b8c {
+    grid-row: 2/4;
+    grid-column: 3/4;
+    z-index: 2;
+}
+
+.b9c {
+    grid-row: 2/4;
+    grid-column: 4/5;
+    z-index: 2;
+}
+
+.b10c {
+    grid-row: 2/4;
+    grid-column: 5/6;
+    z-index: 2;
+}
+
+.b11c {
+    grid-row: 2/4;
+    grid-column: 6/7;
+    z-index: 2;
+}
+
+.b12c {
+    grid-row: 2/4;
+    grid-column: 7/8;
+    z-index: 2;
+}
+
+#coin-container{
+    margin-left: 2vh;
+    display: none;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 50px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+.coin{
+    height: 150px;
+    width: 150px;
+    position: relative;
+    margin: 50px auto;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+.coin img{
+    width: 145px;
+}
+.heads,.tails{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.tails{
+    transform: rotateX(180deg);
+}
+@keyframes spin-tails{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(1980deg);
+    }
+}
+@keyframes spin-heads{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(2160deg);
+    }
+}
+#flip-button:disabled{
+    background-color: #e1e0ee;
+    border-color: #e1e0ee;
+    color: #101020;
+}
+/*start cards*/
+
+.start1c{
+    grid-row: 3/5;
+    grid-column: 8/9;
+    justify-self: center;
+}
+.start2c{
+    grid-row: 3/5;
+    grid-column: 8/9;
+    justify-self: center;
+}
+.start3c{
+    grid-row: 3/5;
+    grid-column: 8/9;
+    justify-self: center;
+}
+.start4c{
+    grid-row: 3/5;
+    grid-column: 8/9;
+    justify-self: center;
+}
+.start5c{
+    grid-row: 3/5;
+    grid-column: 8/9;
+    justify-self: center;
+}
+.start6c{
+    grid-row: 3/5;
+    grid-column: 8/9;
+    justify-self: center;
+}
